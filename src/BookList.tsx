@@ -43,7 +43,7 @@ const BookList = () => {
           {books.map((book: BookItem) => {
             return (
               <div className="book-item" key={book.id}>
-                <img src={book.url} alt="表示" />
+                <img src={book.url} alt="表紙" />
                 <p>{book.title}</p>
                 <p>{book.author}</p>
                 <p>{book.description}</p>
