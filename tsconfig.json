@@ -9,12 +9,13 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "module": "ES2022",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": false,
+    "sourceMap": true,
     // "isolatedModules": true,
-    "noEmit": true,
+    // "noEmit": true,
     "jsx": "react-jsx"
   },
   "include": ["src"]

@@ -7,26 +7,51 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (function() { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/index.tsx":
-/*!***********************!*\
-  !*** ./src/index.tsx ***!
-  \***********************/
-/***/ (function() {
+/***/ "./index.tsx":
+/*!*******************!*\
+  !*** ./index.tsx ***!
+  \*******************/
+/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
-eval("throw new Error(\"Module build failed (from ./node_modules/ts-loader/index.js):\\nError: TypeScript emitted no output for /Users/sakiyamayuuki/react-example-app/server/src/index.tsx.\\n    at makeSourceMapAndFinish (/Users/sakiyamayuuki/react-example-app/server/node_modules/ts-loader/dist/index.js:52:18)\\n    at successLoader (/Users/sakiyamayuuki/react-example-app/server/node_modules/ts-loader/dist/index.js:39:5)\\n    at Object.loader (/Users/sakiyamayuuki/react-example-app/server/node_modules/ts-loader/dist/index.js:22:5)\");\n\n//# sourceURL=webpack://server/./src/index.tsx?");
+eval("\nvar express = __webpack_require__(Object(function webpackMissingModule() { var e = new Error(\"Cannot find module 'express'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));\nvar app = express();\nvar port = 9000;\napp.get(\"/\", function (req, res) {\n    res.send(\"Hello World\");\n});\napp.listen(port, function () {\n    console.log(\"サーバー起動中\");\n});\n\n\n//# sourceURL=webpack://server/./index.tsx?");
 
 /***/ })
 
 /******/ 	});
 /************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
 /******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	// This entry module doesn't tell about it's top-level declarations so it can't be inlined
-/******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./src/index.tsx"]();
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = __webpack_require__("./index.tsx");
 /******/ 	
 /******/ })()
 ;
