@@ -5,7 +5,7 @@ module.exports = {
   // development に設定するとソースマップ有効でJSファイルが出力される
 
   // メインとなるJavaScriptファイル（エントリーポイント）
-  entry: "./index.tsx",
+  entry: "./index.js",
   externals: [nodeExternals()],
   // ファイルの出力設定
   output: {
@@ -18,13 +18,19 @@ module.exports = {
   module: {
     rules: [
       {
-        // 拡張子 .ts もしくは .tsx の場合
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        // loader: "ts-loader",
-        // TypeScript をコンパイルする
-        use: "ts-loader",
+        // 拡張子 js のファイル（正規表現）
+        test: /\.js$/,
+        // ローダーの指定
+        loader: "babel-loader",
       },
+      // {
+      //   // 拡張子 .ts もしくは .tsx の場合
+      //   // test: /\.tsx?$/,
+      //   exclude: /node_modules/,
+      //   // TypeScript をコンパイルする
+      //   // use: "ts-loader",
+      //   use: "babel-loader",
+      // },
     ],
   },
   // import 文で .ts や .tsx ファイルを解決するため
