@@ -1,4 +1,4 @@
-// const path = require("path");
+const path = require("path");
 const nodeExternals = require("webpack-node-externals");
 module.exports = {
   // モード値を production に設定すると最適化された状態で、
@@ -18,19 +18,39 @@ module.exports = {
   module: {
     rules: [
       {
-        // 拡張子 js のファイル（正規表現）
-        test: /\.js$/,
-        // ローダーの指定
-        loader: "babel-loader",
+        test: /\.(js|ts|tsx)$/,
+        use: {
+          loader: "babel-loader",
+        },
+        exclude: /node_modules/,
+        include: [__dirname, path.join(__dirname, "src")],
       },
-      // {
-      //   // 拡張子 .ts もしくは .tsx の場合
-      //   // test: /\.tsx?$/,
-      //   exclude: /node_modules/,
-      //   // TypeScript をコンパイルする
-      //   // use: "ts-loader",
-      //   use: "babel-loader",
-      // },
+      {
+        test: /\.(js|ts|tsx)$/,
+        // exclude: /node_modules/,
+        // include: [path.resolve(__dirname, "src")],
+        use: {
+          loader: "ts-loader",
+        },
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: "babel-loader",
+          },
+          {
+            loader: "react-svg-loader",
+            options: {
+              jsx: true, // true outputs JSX tags
+            },
+          },
+        ],
+      },
     ],
   },
   // import 文で .ts や .tsx ファイルを解決するため
@@ -41,4 +61,5 @@ module.exports = {
   // ES5(IE11等)向けの指定（webpack 5以上で必要）
   target: ["web", "es5"],
   mode: "development",
+  devtool: "inline-source-map",
 };
