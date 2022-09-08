@@ -18,21 +18,24 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|ts|tsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
+        exclude: /node_modules/,
         use: {
           loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-react"],
+          },
         },
-        exclude: /node_modules/,
-        include: [__dirname, path.join(__dirname, "src")],
+        // include: [__dirname, path.join(__dirname, "src")],
       },
-      {
-        test: /\.(js|ts|tsx)$/,
-        // exclude: /node_modules/,
-        // include: [path.resolve(__dirname, "src")],
-        use: {
-          loader: "ts-loader",
-        },
-      },
+      // {
+      //   test: /\.(js|ts|tsx)$/,
+      //   // exclude: /node_modules/,
+      //   // include: [path.resolve(__dirname, "src")],
+      //   use: {
+      //     loader: "ts-loader",
+      //   },
+      // },
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
@@ -59,7 +62,8 @@ module.exports = {
     modules: ["node_modules"],
   },
   // ES5(IE11等)向けの指定（webpack 5以上で必要）
-  target: ["web", "es5"],
+  // target: ["web", "es5"],
+  target: ["node"],
   mode: "development",
   devtool: "inline-source-map",
 };
